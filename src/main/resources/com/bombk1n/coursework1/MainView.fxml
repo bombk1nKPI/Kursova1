@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.bombk1n.coursework1.view.MainViewController">
+    <children>
+        <HBox prefHeight="490.0" prefWidth="957.0" spacing="20" style="-fx-padding: 20;">
+            <children>
+                <VBox prefHeight="450.0" prefWidth="500.0" spacing="15" style="-fx-padding: 10;">
+                    <HBox spacing="10">
+                        <TextField fx:id="vertexField" promptText="Vertices"/>
+                        <TextField fx:id="edgeField" promptText="Edges"/>
+                        <Button onAction="#onGenerateGraph" text="Generate Graph"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <TextField fx:id="edgeFrom" promptText="From"/>
+                        <TextField fx:id="edgeTo" promptText="To"/>
+                        <Button onAction="#onAddEdge" text="Add"/>
+                        <Button onAction="#onDeleteEdge" text="Delete"/>
+                    </HBox>
+                    <ComboBox fx:id="methodBox" promptText="Select Method">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Greedy"/>
+                                <String fx:value="Approx"/>
+                                <String fx:value="Backtracking"/>
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                    <Button onAction="#onSolve" text="Solve"/>
+                    <Label fx:id="timeLabel" text="Execution time:"/>
+                    <ListView fx:id="resultList" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0"
+                              prefWidth="450.0"/>
+                    <HBox spacing="10">
+                        <Button onAction="#onClearGraph" text="Clear Graph"/>
+                        <Button onAction="#onSaveResult" text="Save Result"/>
+                    </HBox>
+                </VBox>
+                <Canvas fx:id="graphCanvas" height="450.0" style="-fx-border-color: black; -fx-border-width: 1;"
+                        width="460.0"/>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>
