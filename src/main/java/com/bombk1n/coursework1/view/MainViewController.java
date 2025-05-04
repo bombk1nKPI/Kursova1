@@ -7,6 +7,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -124,13 +126,15 @@ public void onAddEdge() {
     }
 
     @FXML
-    public void onSaveResult() {
-        try {
-            viewModel.saveToFile("vertex_cover.txt");
-        } catch (IOException e) {
-            new Alert(Alert.AlertType.ERROR, "Failed to save file").showAndWait();
-        }
+public void onSaveResult() {
+    try {
+        Path desktopPath = Paths.get(System.getProperty("user.home"),"OneDrive", "Рабочий стол", "vertex_cover.txt");
+        System.out.println(desktopPath);
+        viewModel.saveToFile(desktopPath.toString());
+    } catch (IOException e) {
+        new Alert(Alert.AlertType.ERROR, "Failed to save file").showAndWait();
     }
+}
 
     @FXML
     public void onClearGraph() {
@@ -140,7 +144,7 @@ public void onAddEdge() {
 
     private void drawGraph() {
         GraphicsContext gc = graphCanvas.getGraphicsContext2D();
-        gc.clearRect(0, 0, graphCanvas.getWidth(), graphCanvas.getHeight()); // Clear the canvas
+        gc.clearRect(0, 0, graphCanvas.getWidth(), graphCanvas.getHeight());
 
         var graph = viewModel.graphProperty().get();
         var cover = viewModel.resultCoverProperty().get();

@@ -32,4 +32,9 @@ public class Graph {
     
         return g;
     }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }

@@ -12,22 +12,43 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.bombk1n.coursework1.view.MainViewController">
     <children>
         <HBox prefHeight="490.0" prefWidth="957.0" spacing="20" style="-fx-padding: 20;">
             <children>
                 <VBox prefHeight="450.0" prefWidth="500.0" spacing="15" style="-fx-padding: 10;">
                     <HBox spacing="10">
-                        <TextField fx:id="vertexField" promptText="Vertices"/>
-                        <TextField fx:id="edgeField" promptText="Edges"/>
+                        <VBox spacing="5">
+                            <Label text="Number of Vertices"/>
+                            <TextField fx:id="vertexField" promptText="Vertices"/>
+                        </VBox>
+                        <VBox spacing="5">
+                            <Label text="Number of Edges"/>
+                            <TextField fx:id="edgeField" promptText="Edges"/>
+                        </VBox>
+                        <VBox spacing="5">
+                        <Label text=""/>
                         <Button onAction="#onGenerateGraph" text="Generate Graph"/>
+                        </VBox>
                     </HBox>
                     <HBox spacing="10">
-                        <TextField fx:id="edgeFrom" promptText="From"/>
-                        <TextField fx:id="edgeTo" promptText="To"/>
+                        <VBox spacing="5">
+                            <Label text="From Vertex"/>
+                            <TextField fx:id="edgeFrom" promptText="Enter starting vertex"/>
+                        </VBox>
+                        <VBox spacing="5">
+                            <Label text="To Vertex"/>
+                            <TextField fx:id="edgeTo" promptText="Enter ending vertex"/>
+                        </VBox>
+                         <VBox spacing="5">
+                        <Label text=""/>
                         <Button onAction="#onAddEdge" text="Add"/>
+                        </VBox>
+                         <VBox spacing="5">
+                        <Label text=""/>
                         <Button onAction="#onDeleteEdge" text="Delete"/>
+                        </VBox>
                     </HBox>
                     <ComboBox fx:id="methodBox" promptText="Select Method">
                         <items>

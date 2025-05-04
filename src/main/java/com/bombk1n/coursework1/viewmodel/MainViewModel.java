@@ -23,25 +23,25 @@ public class MainViewModel {
     }
 
     public void solve(String method) {
-        long start = System.currentTimeMillis();
-        Set<Integer> cover;
-        switch (method) {
-            case "Greedy":
-                cover = VertexCoverAlgorithms.greedy(graph.get());
-                break;
-            case "Approx":
-                cover = VertexCoverAlgorithms.approx(graph.get());
-                break;
-            case "Backtracking":
-                cover = VertexCoverAlgorithms.backtracking(graph.get());
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown method");
-        }
-        long end = System.currentTimeMillis();
-        resultCover.setAll(cover);
-        executionTime.set((end - start) + " ms");
+    long start = System.nanoTime(); 
+    Set<Integer> cover;
+    switch (method) {
+        case "Greedy":
+            cover = VertexCoverAlgorithms.greedy(graph.get());
+            break;
+        case "Approx":
+            cover = VertexCoverAlgorithms.approx(graph.get());
+            break;
+        case "Backtracking":
+            cover = VertexCoverAlgorithms.backtracking(graph.get());
+            break;
+        default:
+            throw new IllegalArgumentException("Unknown method");
     }
+    long end = System.nanoTime();
+    resultCover.setAll(cover);
+    executionTime.set(((end - start) / 1_000_000) + " ms"); 
+}
 
     public void saveToFile(String filename) throws IOException {
         FileWriter writer = new FileWriter(filename);
